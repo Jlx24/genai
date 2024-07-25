@@ -1,4 +1,4 @@
-# GENAI
+# RAG (Retrieval Augmented Generation)
 
 ## 1. Understanding Embeddings
 
@@ -55,3 +55,24 @@ We give it our context and the user's question.
 
 #### Reranking
 A good option for RAG is to retrieve more documents than you want in the end, then rerank the results with a more powerful retrieval model before keeping only the `top_k`.
+
+#### Demo 3: Functional, performant RAG system
+
+# Building a Python API and Fetching it in React: A Step-by-Step Guide
+## 0. Prerequisites
+- install the Flask 
+- install nvm:  https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updatingnvm
+- install npx: https://www.geeksforgeeks.org/installation-of-node-js-on-linux/
+- install install Axios libraries: https://www.geeksforgeeks.org/axios-in-react-a-guide-for-beginners/
+
+Introduction to Axios:
+Axios, which is a popular library is mainly used to send asynchronous HTTP requests to REST endpoints. This library is very useful to perform CRUD operations.
+
+This popular library is used to communicate with the backend. Axios supports the Promise API, native to JS ES6.
+Using Axios we make API requests in our application. Once the request is made we get the data in Return, and then we use this data in our project. 
+This library is very popular among developers. You can check on GitHub and you will find 78k stars on it. 
+
+## demo: How to Create a Flask + React Project | Python Backend + React Frontend
+https://www.youtube.com/watch?v=7LNl2JlZKHA
+
+
