@@ -75,4 +75,63 @@ This library is very popular among developers. You can check on GitHub and you w
 ## demo: How to Create a Flask + React Project | Python Backend + React Frontend
 https://www.youtube.com/watch?v=7LNl2JlZKHA
 
+# AWS
+## 1. Deploying AWS Lambda Functions with Docker and Amazon ECR
+https://www.youtube.com/watch?v=UPkDjhhfVcY
+https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html
+
+Amazon Elastic Container Registry (Amazon ECR) is an AWS managed container image registry service that is secure, scalable, and reliable. 
+
+
+Python and DockerFile used Github Repo: https://github.com/hitchon1/Lambda_EC...
+
+Below are all the CLI commands used in order to help you follow along.
+
+Commands and Descriptions:
+
+Repository Creation in Amazon ECR
+- Command: `aws ecr create-repository --repository-name my-lambda-repo-demo`
+- Description: Creates a new repository in Amazon Elastic Container Registry (ECR) with the specified name.
+
+Building a Docker Image
+- Command: `docker build -t my-lambda-image .`
+- Description: Builds a Docker image using the Dockerfile in the current directory and tags it with the specified name.
+
+Authenticating Docker with Amazon ECR
+- Command: `aws ecr get-login-password --region (region) | docker login --username AWS --password-stdin (account id).dkr.ecr.(region).amazonaws.com`
+- Description: Retrieves an authentication token from ECR and then uses it to log in to the Docker client.
+
+Fetching AWS Account ID
+- Command: `aws sts get-caller-identity --query Account --output text`
+- Description: Retrieves the AWS account ID for the authenticated user or role.
+
+Tagging the Docker Image for ECR
+- Command: `docker tag my-lambda-image:latest (account id).dkr.ecr.(region).amazonaws.com/my-lambda-repo-demo:latest`
+- Description: Tags the previously built Docker image with the ECR repository URL.
+
+Pushing the Docker Image to ECR
+-Command: `docker push (account id).dkr.ecr.(region).amazonaws.com/my-lambda-repo-demo:latest`
+- Description: Pushes the tagged Docker image to the specified ECR repository.
+
+
+## 2. ECR, EC2, Docker Images:
+- Functionality:
+
+EC2: Focused on providing raw compute power with virtual servers.
+ECR: Focused on managing and storing container images for containerized applications.
+- Use Case:
+
+EC2: Used for running a variety of applications, from web servers to databases, by provisioning virtual machines.
+ECR: Used specifically for containerized environments, helping manage Docker images that can be deployed to container orchestration services.
+- Integration:
+
+EC2: Can run any application that requires a virtual server.
+ECR: Typically used in conjunction with AWS container services like ECS, EKS, and AWS Fargate for deploying containerized applications.
+- Management:
+
+EC2: Requires users to manage the operating system, patches, scaling, and networking for the instances.
+ECR: Manages the storage, security, and versioning of container images, easing the deployment process for containerized applications.
+
+In summary, EC2 is about providing the raw computing infrastructure, whereas ECR is about managing container images for applications running in a containerized environment.
+
 
