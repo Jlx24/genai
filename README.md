@@ -77,8 +77,12 @@ https://www.youtube.com/watch?v=7LNl2JlZKHA
 
 # AWS
 ## 1. Deploying AWS Lambda Functions with Docker and Amazon ECR
-https://www.youtube.com/watch?v=UPkDjhhfVcY
-https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html
+- https://www.youtube.com/watch?v=UPkDjhhfVcY
+
+- https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html
+
+- https://medium.com/@olakunle.abiola/getting-started-with-aws-ecr-797514d7cb4d
+
 
 Amazon Elastic Container Registry (Amazon ECR) is an AWS managed container image registry service that is secure, scalable, and reliable. 
 
@@ -115,6 +119,10 @@ Pushing the Docker Image to ECR
 
 
 ## 2. ECR, EC2, Docker Images:
+
+Amazon ECR is a fully-managed, private Docker container registry that makes it easy for developers to store, manage, and deploy Docker container images. Amazon ECR integrates seamlessly with Amazon Elastic Container Service (Amazon ECS) and Amazon Elastic Kubernetes Service (Amazon EKS). Good thing is, Amazon ECR can also be used with other cloud vendors.
+
+## 2.1 ECR VS. EC2
 - Functionality:
 
 EC2: Focused on providing raw compute power with virtual servers.
@@ -133,5 +141,63 @@ EC2: Requires users to manage the operating system, patches, scaling, and networ
 ECR: Manages the storage, security, and versioning of container images, easing the deployment process for containerized applications.
 
 In summary, EC2 is about providing the raw computing infrastructure, whereas ECR is about managing container images for applications running in a containerized environment.
+
+## 2.2 Docker and container:
+- container: package apps with all dependencies and configuration
+- where do container live: container repo (private/ public) -- docker hub (hub.docker.com)
+- why we need container: deploy on different OS/instance might have error
+- how container works: package with all needed configuration and download it to local machine (no error) --> no environment on the server - except for docker runtime
+- docker vs. VM: docker is better (size, speed) (not a good: compability)
+- docker is orginal made for linux based environments
+
+## 2.3 Docker (all you need):
+### 2.3.1 Install: Docker Desktop
+### 2.3.2 Docker Images vs. Container
+- Docker Image: Package everything into an artifact; Can be easily shared and moved; an executable application artifcat; includes app source code and complete environment configuration
+- Docker Containers: running instance of an image (can be multiple containers)
+### 2.3.3 Docker Registries
+- A storage and distribution system for Docker images
+- official and unofficial: Docker hub
+### 2.3.4 Docker code
+- pull a docker: docker pull xxx:ver
+- run an image: docker run xx:ver
+- check your docker: docker ps
+- run in background: docker run -d xxx:ver
+### 2.3.5 Port Blinding: 
+- Docker run -d -p 9000:80 xx:ver (local host)
+- close: docker ps -a/ docker stop id
+- restart:' docker start id/name
+### 2.3.6: Public and Private Docker
+- Private registries: AMZ ECR
+- Registry vs. Repository:  Docker Registry: a service providing storage (can be host by 3rd party, e.g., AWS ECR, collection of repositories); Docker REPOSITORY: collection of related images with same name but different versions 
+
+### 2.3.7: Build your own Dockerfile
+Docker filer --build --> Docker Image -- run --> Container 
+### 2.3.8: Docker UI client
+
+# Demo 1: AWS lambda deploy with ECR
+https://www.youtube.com/watch?v=UPkDjhhfVcY
+0. what is AWS CIL: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
