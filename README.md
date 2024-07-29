@@ -224,8 +224,20 @@ e.g., user -- IAM -- EC2
 - Github: https://github.com/yeshwanthlm/YouTube/blob/main/memory_utilization_ec2.md
 #### demo steps:
 - Step 1: Create an IAM and Attach CloudWatch and SSM Full Access - EC2-CloudWatch-Role
+<div style="display: flex; justify-content: space-between;">
+  <img src="image/cw1.png" alt="cw 1" style="width: 50%;"/>
+</div>
 - Step 2: Create a parameter in Systems Manger with the name "/alarm/AWS-CWAgentLinConfig" and store the value.
+<div style="display: flex; justify-content: space-between;">
+  <img src="image/cw2.png" alt="cw 2" style="width: 50%;"/>
+</div>
 - Step 3: Create an EC2 Instance, Attach the role created in Step 1 and Add the commands in the Userdata Section.
+
+<div style="display: flex; justify-content: space-between;">
+  <img src="image/cw3.png" alt="cw3" style="width: 30%;"/>
+  <img src="image/cw4.png" alt="cw4" style="width: 30%;"/>
+    <img src="image/cw5.png" alt="cw5" style="width: 30%;"/>
+</div>
 
 
 
