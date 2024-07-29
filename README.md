@@ -1,6 +1,13 @@
 # RAG (Retrieval Augmented Generation)
+<img src="https://huggingface.co/datasets/huggingface/cookbook-images/resolve/main/RAG_workflow.png" alt="RAG Workflow" height="700">
 
 ## 1. Understanding Embeddings
+
+
+<div style="display: flex; justify-content: space-between;">
+  <img src="image/vis.png" alt="Image 7" style="width: 50%;"/>
+</div>
+
 
 ### 1.1 How to Do Embeddings (Embedding_hf)
 - Embedding with all-MiniLM-L6-v2 (Hugging Face pipeline)
@@ -57,6 +64,9 @@ We give it our context and the user's question.
 A good option for RAG is to retrieve more documents than you want in the end, then rerank the results with a more powerful retrieval model before keeping only the `top_k`.
 
 #### Demo 3: Functional, performant RAG system
+<div style="display: flex; justify-content: space-between;">
+  <img src="image/doc.png" alt="doc" style="width: 50%;"/>
+</div>
 
 # Building a Python API and Fetching it in React: A Step-by-Step Guide
 ## 0. Prerequisites
@@ -75,6 +85,7 @@ This library is very popular among developers. You can check on GitHub and you w
 ## demo: How to Create a Flask + React Project | Python Backend + React Frontend
 https://www.youtube.com/watch?v=7LNl2JlZKHA
 
+
 # AWS
 ## 1. Deploying AWS Lambda Functions with Docker and Amazon ECR
 - https://www.youtube.com/watch?v=UPkDjhhfVcY
@@ -82,40 +93,6 @@ https://www.youtube.com/watch?v=7LNl2JlZKHA
 - https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html
 
 - https://medium.com/@olakunle.abiola/getting-started-with-aws-ecr-797514d7cb4d
-
-
-Amazon Elastic Container Registry (Amazon ECR) is an AWS managed container image registry service that is secure, scalable, and reliable. 
-
-
-Python and DockerFile used Github Repo: https://github.com/hitchon1/Lambda_EC...
-
-Below are all the CLI commands used in order to help you follow along.
-
-Commands and Descriptions:
-
-Repository Creation in Amazon ECR
-- Command: `aws ecr create-repository --repository-name my-lambda-repo-demo`
-- Description: Creates a new repository in Amazon Elastic Container Registry (ECR) with the specified name.
-
-Building a Docker Image
-- Command: `docker build -t my-lambda-image .`
-- Description: Builds a Docker image using the Dockerfile in the current directory and tags it with the specified name.
-
-Authenticating Docker with Amazon ECR
-- Command: `aws ecr get-login-password --region (region) | docker login --username AWS --password-stdin (account id).dkr.ecr.(region).amazonaws.com`
-- Description: Retrieves an authentication token from ECR and then uses it to log in to the Docker client.
-
-Fetching AWS Account ID
-- Command: `aws sts get-caller-identity --query Account --output text`
-- Description: Retrieves the AWS account ID for the authenticated user or role.
-
-Tagging the Docker Image for ECR
-- Command: `docker tag my-lambda-image:latest (account id).dkr.ecr.(region).amazonaws.com/my-lambda-repo-demo:latest`
-- Description: Tags the previously built Docker image with the ECR repository URL.
-
-Pushing the Docker Image to ECR
--Command: `docker push (account id).dkr.ecr.(region).amazonaws.com/my-lambda-repo-demo:latest`
-- Description: Pushes the tagged Docker image to the specified ECR repository.
 
 
 ## 2. ECR, EC2, Docker Images:
@@ -175,9 +152,77 @@ In summary, EC2 is about providing the raw computing infrastructure, whereas ECR
 Docker filer --build --> Docker Image -- run --> Container 
 ### 2.3.8: Docker UI client
 
-# Demo 1: AWS lambda deploy with ECR
+### Demo 1: AWS lambda deploy with ECR, Dockers
 https://www.youtube.com/watch?v=UPkDjhhfVcY
-0. what is AWS CIL: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html
+#### 0. what is AWS CIL: 
+- https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html
+#### 1. Lamada:
+- https://aws.amazon.com/serverless/videos/video-lambda-intro/
+
+Amazon Elastic Container Registry (Amazon ECR) is an AWS managed container image registry service that is secure, scalable, and reliable. 
+
+
+Python and DockerFile used Github Repo: https://github.com/hitchon1/Lambda_EC...
+
+Below are all the CLI commands used in order to help you follow along.
+
+Commands and Descriptions:
+
+Repository Creation in Amazon ECR
+- Command: `aws ecr create-repository --repository-name my-lambda-repo-demo`
+- Description: Creates a new repository in Amazon Elastic Container Registry (ECR) with the specified name.
+
+Building a Docker Image
+- Command: `docker build -t my-lambda-image .`
+- Description: Builds a Docker image using the Dockerfile in the current directory and tags it with the specified name.
+
+Authenticating Docker with Amazon ECR
+- Command: `aws ecr get-login-password --region (region) | docker login --username AWS --password-stdin (account id).dkr.ecr.(region).amazonaws.com`
+- Description: Retrieves an authentication token from ECR and then uses it to log in to the Docker client.
+
+Fetching AWS Account ID
+- Command: `aws sts get-caller-identity --query Account --output text`
+- Description: Retrieves the AWS account ID for the authenticated user or role.
+
+Tagging the Docker Image for ECR
+- Command: `docker tag my-lambda-image:latest (account id).dkr.ecr.(region).amazonaws.com/my-lambda-repo-demo:latest`
+- Description: Tags the previously built Docker image with the ECR repository URL.
+
+Pushing the Docker Image to ECR
+-Command: `docker push (account id).dkr.ecr.(region).amazonaws.com/my-lambda-repo-demo:latest`
+- Description: Pushes the tagged Docker image to the specified ECR repository.
+
+
+## 3 IAM roles (identity and access management)
+- https://www.youtube.com/watch?v=7sYE6J1_CsQ
+- granting s3. ec2. rds 
+### 3.1 user vs. role vs. group vs. policy : (demo: give a new person lamada access)
+all aws is locked: lamaba, dynamDB, VPC, S3, EC2
+- Principle of least privilege
+e.g., user -- IAM -- EC2
+- IAM Needs 2 Thing: Identity (user, role, group) and Permissions (policy)
+- users vs. Role: user is people (e..g, IMA users), role is aws resource 
+- group (user group)
+<div style="display: flex; justify-content: space-between;">
+  <img src="image/1.png" alt="Image 1" style="width: 22%;"/>
+  <img src="image/2.png" alt="Image 2" style="width: 22%;"/>
+  <img src="image/4.png" alt="Image 3" style="width: 22%;"/>
+   <img src="image/5.png" alt="Image 4" style="width: 22%;"/>
+</div>
+
+### 3.2 Demo question: give a temp access to lambda
+
+<div style="display: flex; justify-content: space-between;">
+  <img src="image/6.png" alt="Image 6" style="width: 50%;"/>
+</div>
+
+
+## 4. Monitor your instances using CloudWatch
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html
+
+
+
 
 
 
