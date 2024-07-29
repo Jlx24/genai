@@ -219,7 +219,15 @@ e.g., user -- IAM -- EC2
 
 ## 4. Monitor your instances using CloudWatch
 
-https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html
+- aws doc: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html
+- video: https://www.youtube.com/watch?v=dgAzhQJzPkA
+- Github: https://github.com/yeshwanthlm/YouTube/blob/main/memory_utilization_ec2.md
+#### demo steps:
+- Step 1: Create an IAM and Attach CloudWatch and SSM Full Access - EC2-CloudWatch-Role
+- Step 2: Create a parameter in Systems Manger with the name "/alarm/AWS-CWAgentLinConfig" and store the value.
+- Step 3: Create an EC2 Instance, Attach the role created in Step 1 and Add the commands in the Userdata Section.
+
+
 
 
 
